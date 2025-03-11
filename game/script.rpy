@@ -20,12 +20,17 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show cherub
 
     # These display lines of dialogue.
 
     e "You've created a new Ren'Py game."
+    show screen cherub_builder
 
+    e "Once you add a story, pictures, and music, you can release it to the world!"
+    e "Once you add a story, pictures, and music, you can release it to the world!"
+    e "Once you add a story, pictures, and music, you can release it to the world!"
+    e "Once you add a story, pictures, and music, you can release it to the world!"
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
     # This ends the game.

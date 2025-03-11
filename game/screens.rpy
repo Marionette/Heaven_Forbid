@@ -1609,3 +1609,142 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+
+################################################################################
+## Minigame screens
+################################################################################
+
+init -1:
+    define selected_headpice = "None"
+    define selected_wings = "None"
+    define selected_accessory = "None"
+    
+    default cherub_str = 0
+    default cherub_dex = 0
+    default cherub_cha = 0
+    
+layeredimage cherub:
+    group base:
+        attribute body default:
+            im.FactorScale("images/cherub/cherub_base.png", 0.5)
+        
+    group wings:
+        attribute wings_gold:
+            im.FactorScale("images/cherub/wings_gold.png", 0.5) 
+        attribute wings_flame:
+            im.FactorScale("images/cherub/wings_flame.png", 0.5)
+        attribute wings_feather:
+            im.FactorScale("images/cherub/wings_feather.png", 0.5)
+        
+    group headpiece:
+        attribute headpiece_halo:
+            im.FactorScale("images/cherub/headpiece_halo.png", 0.5)
+        attribute headpiece_helmet:
+            im.FactorScale("images/cherub/headpiece_helmet.png", 0.5)
+        attribute headpiece_coronet:
+            im.FactorScale("images/cherub/headpiece_coronet.png", 0.5)
+        
+    group accessory:
+        attribute accessory_bow:
+            im.FactorScale("images/cherub/accessory_bow.png", 0.5)
+        attribute accessory_sword:
+            im.FactorScale("images/cherub/accessory_sword.png", 0.5)
+        attribute accessory_trumpet:
+            im.FactorScale("images/cherub/accessory_trumpet.png", 0.5)
+
+init python:
+    def GetStr(_w, _h, _a):
+        str = 0
+        if _w == "flame":
+            str += 1
+        if _h == "helmet":
+            str += 1
+        if _a == "sword":
+            str += 1
+        return str
+        
+    def GetDex(_w, _h, _a):
+        dex = 0
+        if _w == "feather":
+            dex += 1
+        if _h == "halo":
+            dex += 1
+        if _a == "bow":
+            dex += 1
+        return dex
+        
+    def GetCha(_w, _h, _a):
+        dex = 0
+        if _w == "gold":
+            dex += 1
+        if _h == "coronet":
+            dex += 1
+        if _a == "trumpet":
+            dex += 1
+        return dex
+
+screen cherub_builder:
+
+    ## Ensure other screens do not get input while this screen is displayed.
+    modal True
+
+    zorder 200
+
+    #style_prefix "confirm"
+
+    #add "gui/overlay/confirm.png"
+
+    frame:
+        $cherub_text = "cherub"
+        if not selected_wings == "None":
+            $cherub_text = cherub_text + " wings_" + selected_wings
+        if not selected_accessory == "None":
+            $cherub_text = cherub_text + " accessory_" + selected_accessory
+        if not selected_headpice == "None":
+            $cherub_text = cherub_text + " headpiece_" + selected_headpice
+            
+        frame:
+            background None yalign 1.0
+            add cherub_text
+        vbox:
+            xalign 0.8
+            yalign .5
+            spacing 45
+            text "Selected wings = [selected_wings]"
+            
+            hbox:
+                textbutton _("Feather") action SetVariable("selected_wings", "feather")
+                textbutton _("Gold") action  SetVariable("selected_wings", "gold")
+                textbutton _("Flame") action  SetVariable("selected_wings", "flame")
+                
+            text "Selected headpiece = [selected_headpice]"
+            
+            hbox:
+                textbutton _("Halo") action SetVariable("selected_headpice", "halo")
+                textbutton _("Helmet") action  SetVariable("selected_headpice", "helmet")
+                textbutton _("Coronet") action  SetVariable("selected_headpice", "coronet")
+                
+            text "Selected accessory = [selected_accessory]"
+            
+            hbox:
+                textbutton _("Bow") action SetVariable("selected_accessory", "bow")
+                textbutton _("Sword") action  SetVariable("selected_accessory", "sword")
+                textbutton _("Trumpet") action  SetVariable("selected_accessory", "trumpet")
+                
+            text "Stats:"
+            
+            vbox:
+                $cherub_str = GetStr(selected_wings, selected_headpice, selected_accessory)
+                $cherub_dex = GetDex(selected_wings, selected_headpice, selected_accessory)
+                $cherub_cha = GetCha(selected_wings, selected_headpice, selected_accessory)
+                hbox:
+                    text "Strength : [cherub_str]   "
+                    bar value cherub_str xsize 250 range 3
+                hbox:
+                    text "Dexterity : [cherub_dex]  "
+                    bar value cherub_dex xsize 250 range 3
+                hbox:
+                    text "Charisma : [cherub_cha]  "
+                    bar value cherub_cha xsize 250 range 3
+
