@@ -1744,6 +1744,9 @@ screen cherub_builder:
                 
             #text "Stats:"
             
+            $cherub_str = GetStr(selected_wings, selected_headpice, selected_accessory)
+            $cherub_dex = GetDex(selected_wings, selected_headpice, selected_accessory)
+            $cherub_cha = GetCha(selected_wings, selected_headpice, selected_accessory)
             if selected_wings == "None" or selected_headpice == "None" or selected_accessory == "None" :
                 #textbutton "Continue" action Null
                 pass
@@ -1751,9 +1754,6 @@ screen cherub_builder:
                 textbutton "Continue" action Return()
             
             #vbox:
-            #    $cherub_str = GetStr(selected_wings, selected_headpice, selected_accessory)
-            #    $cherub_dex = GetDex(selected_wings, selected_headpice, selected_accessory)
-            #    $cherub_cha = GetCha(selected_wings, selected_headpice, selected_accessory)
             #    hbox:
             #        text "Strength : [cherub_str]   "
             #        bar value cherub_str xsize 250 range 3
