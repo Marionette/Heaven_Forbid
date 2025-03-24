@@ -36,7 +36,7 @@ init:
     define Asta = Character("Asta", image="asta")
     define Cherub = Character("Cherub", image="asta")
     define Keru = Character("Keru", image="keru")
-    define Saint_Peter = Character("Saint_Peter", image="peter")
+    define Saint_Peter = Character("Saint Peter", image="peter")
     define R__ = Character("R__", image="red")
     define O_____ = Character("O_____", image="orange")
     define Y_____ = Character("Y_____", image="yellow")

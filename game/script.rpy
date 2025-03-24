@@ -2529,7 +2529,7 @@ label part_016:
 label part_AA:
 
   $ points_surrender += 1
-
+  "Eva wins this round!"
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
   jump part_AF
@@ -2537,6 +2537,7 @@ label part_AA:
 label part_AD:
 
   $ points_victory += 1
+  "Lilis wins this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2544,6 +2545,7 @@ label part_AD:
 
 label part_AE:
 
+  "Eva wins this round!"
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AF
@@ -2617,6 +2619,7 @@ label part_018:
 label part_AG:
 
   $ points_surrender += 1
+  "Eva wins this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2626,6 +2629,7 @@ label part_AG:
 label part_AJ:
 
   $ points_victory += 1
+  "Lilis wins this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2633,6 +2637,7 @@ label part_AJ:
 
 label part_AK:
 
+  "Eva wins this round!"
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AL
@@ -2708,6 +2713,7 @@ label part_020:
 label part_AM:
 
   $ points_surrender += 1
+  "Eva wins this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2716,6 +2722,7 @@ label part_AM:
 label part_AP:
 
   $ points_victory += 1
+  "Lilis wins this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2723,6 +2730,7 @@ label part_AP:
 
 label part_AQ:
 
+  "Eva wins this round!"
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AR
@@ -2801,6 +2809,7 @@ label part_022:
 label part_AS:
 
   $ points_surrender += 1
+  "Eva wins this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2809,6 +2818,7 @@ label part_AS:
 label part_AV:
 
   $ points_victory += 1
+  "Lilis wins this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2816,6 +2826,7 @@ label part_AV:
 
 label part_AW:
 
+  "Eva wins this round!"
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AX
