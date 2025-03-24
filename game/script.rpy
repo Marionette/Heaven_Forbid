@@ -642,7 +642,7 @@ label part_001:
 
   show eva eva_default at left behind lilis
 
-  B___ "How do you do? My name is ◼◼◼◼◼◼."
+  B___ "How do you do? My name is B◼◼◼."
 
   show eva eva_smile at left behind lilis
 
@@ -710,7 +710,7 @@ label part_001:
 
   show green green_default at right behind lilis with dissolve
 
-  G____ "Hello, everyone. The name's ◼◼◼◼◼◼."
+  G____ "Hello, everyone. The name's G◼◼◼◼."
 
   G____ "Heaven's a dream come true, isn't it?"
 
@@ -772,7 +772,7 @@ label part_001:
 
   Y_____ "I could never figure out what major I wanted."
 
-  Y_____ "Oh, my name's ◼◼◼◼◼◼, by the way."
+  Y_____ "Oh, my name's Y◼◼◼◼◼, by the way."
 
   show lilis lilis_smile #as side image
 
@@ -814,7 +814,7 @@ label part_001:
 
   show lilis lilis_default #as side image
 
-  O_____ "My name's ◼◼◼◼◼◼."
+  O_____ "My name's O◼◼◼◼◼."
 
   O_____ "I was your everyday, run-of-the-mill office worker."
 
@@ -842,7 +842,7 @@ label part_001:
 
   I_____ "As do I. I find it invigorating."
 
-  I_____ "Salutations. I'm none other than ◼◼◼◼◼◼."
+  I_____ "Salutations. I'm none other than I◼◼◼◼◼."
 
   I_____ "I was an actress. Theater was my life."
 
@@ -876,7 +876,7 @@ label part_001:
 
   P___ "Thank you. That's very sweet of you."
 
-  P___ "I'm ◼◼◼◼◼◼. It's wonderful to meet you all."
+  P___ "I'm P◼◼◼. It's wonderful to meet you all."
 
   P___ "I worked as a nurse in a public hospital."
 
@@ -896,7 +896,7 @@ label part_001:
 
   V_____ "My work on Earth wasn't quite so noble."
 
-  V_____ "Hey, everybody! I'm ◼◼◼◼◼◼!"
+  V_____ "Hey, everybody! I'm V◼◼◼◼◼!"
 
   V_____ "You might've met me at a bar once or twice."
 
@@ -1026,7 +1026,7 @@ label part_001:
 
   show eva eva_default at left behind lilis
 
-  R__ "I'm ◼◼◼◼◼◼."
+  R__ "I'm R◼◼."
 
   show eva eva_smile at left behind lilis
 
@@ -1128,7 +1128,7 @@ label part_001:
 
   Lilis "We're all here for a reason."
 
-  Lilis "That includes you, ◼◼◼◼◼◼."
+  Lilis "That includes you, R◼◼."
 
   show lilis lilis_default #as side image
 
@@ -1152,7 +1152,7 @@ label part_001:
 
   show eva eva_smile at left behind lilis
 
-  Eva "◼◼◼◼◼◼, would you like to meet the others?"
+  Eva "R◼◼, would you like to meet the others?"
 
   Eva "There are ten of us here at the gates so far."
 
@@ -1935,7 +1935,7 @@ label part_012:
 
   "And so I followed suit. I didn't know what else to do."
 
-  Eva "◼◼◼◼◼◼ and ◼◼◼◼◼◼ are right!"
+  Eva "B◼◼◼ and P◼◼◼ are right!"
 
   Eva "We have no reason to doubt the words of a saint."
 
@@ -2265,7 +2265,7 @@ label part_012:
 
   "I allow the reality of my current situation to sink in."
 
-  show keru keru_default at left behind lilis with dissolve
+  show keru keru_default at left behind lilis, asta with dissolve
 
   "Then another cherub approaches."
 
@@ -2339,7 +2339,7 @@ label part_012:
 
   "It's nearly time to square off against my last competitor."
 
-  show lilis smile_default #as side image
+  show lilis lilis_smile #as side image
 
   stop music fadeout 1.0
 
@@ -2452,8 +2452,6 @@ label part_013:
   menu:
     "Am I ready for the final trial?"
     "Yes.":
-      jump part_015
-    "No. ":#[VFX: Cursor drifts toward yes.]":
       jump part_015
     "Not yet. Explain again.":
       jump part_014
@@ -2879,7 +2877,7 @@ label part_024:
 
   show asta asta_default at center behind lilis
 
-  show keru keru_default at left behind lilis with dissolve
+  show keru keru_default at left behind lilis, asta with dissolve
 
   "The cherub called Kerubiel approaches once more."
 
@@ -3273,7 +3271,7 @@ label part_026:
 
   show asta asta_default at center behind lilis
 
-  show keru keru_default at left behind lilis with dissolve
+  show keru keru_default at left behind lilis, asta with dissolve
 
   "The cherub named Kerubiel approaches once more."
 
@@ -3498,7 +3496,7 @@ label part_027:
 
   show asta asta_default at center behind lilis
 
-  show keru keru_default at left behind lilis with dissolve
+  show keru keru_default at left behind lilis, asta with dissolve
 
   "The cherub dubbed Kerubiel approaches once more."
 
@@ -3560,7 +3558,7 @@ label part_027:
 
   "There are only three options."
 
-  "First, the cherubim can cast me down to hell"
+  "First, the cherubim can cast me down to hell."
 
   "Second, they can reassign me to Limbo."
 
@@ -3789,6 +3787,8 @@ label part_027:
   hide asta
 
   show asta asta_wingless_default at left behind lilis with dissolve
+
+  nvl_narrator "Are you listening closely, Lilis?"
 
   nvl_narrator "As you might've guessed, I'm an interloper."
 
@@ -4042,6 +4042,7 @@ label part_credits:
     $ quick_menu = True
 
     return
+
 
 
 
