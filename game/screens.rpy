@@ -1620,18 +1620,18 @@ init -1:
     define selected_wings = "None"
     define selected_accessory = "None"
     
-    default cherub_str = 0
-    default cherub_dex = 0
-    default cherub_cha = 0
+    define cherub_str = 0
+    define cherub_dex = 0
+    define cherub_cha = 0
     
 layeredimage cherub:
         
     group wings:
-        attribute wings_gold:
+        attribute wings_Gold:
             im.FactorScale("images/cherub/wings_gold.png", 1.0) 
-        attribute wings_flame:
+        attribute wings_Flaming:
             im.FactorScale("images/cherub/wings_flaming.png", 1.0)
-        attribute wings_feather:
+        attribute wings_Feather:
             im.FactorScale("images/cherub/wings_feather.png", 1.0)
             
     group base:
@@ -1639,51 +1639,51 @@ layeredimage cherub:
             im.FactorScale("images/cherub/avatar_white_default.png", 1.0)
         
     group headpiece:
-        attribute headpiece_halo:
+        attribute headpiece_Halo:
             im.FactorScale("images/cherub/headpiece_halo.png", 1.0)
-        attribute headpiece_helmet:
+        attribute headpiece_Horns:
             im.FactorScale("images/cherub/headpiece_helm.png", 1.0)
-        attribute headpiece_coronet:
+        attribute headpiece_Coronet:
             im.FactorScale("images/cherub/headpiece_coronet.png", 1.0)
         
     group accessory:
-        attribute accessory_bow:
+        attribute accessory_Bow:
             im.FactorScale("images/cherub/accessory_bow.png", 1.0)
-        attribute accessory_sword:
+        attribute accessory_Sword:
             im.FactorScale("images/cherub/accessory_sword.png", 1.0)
-        attribute accessory_trumpet:
+        attribute accessory_Trumpet:
             im.FactorScale("images/cherub/accessory_trumpet.png", 1.0)
 
 init python:
     def GetStr(_w, _h, _a):
         str = 0
-        if _w == "flame":
+        if _w == "Flaming":
             str += 1
-        if _h == "helmet":
+        if _h == "Horns":
             str += 1
-        if _a == "sword":
+        if _a == "Sword":
             str += 1
         return str
         
     def GetDex(_w, _h, _a):
         dex = 0
-        if _w == "feather":
+        if _w == "Feather":
             dex += 1
-        if _h == "halo":
+        if _h == "Halo":
             dex += 1
-        if _a == "bow":
+        if _a == "Bow":
             dex += 1
         return dex
         
     def GetCha(_w, _h, _a):
-        dex = 0
-        if _w == "gold":
-            dex += 1
-        if _h == "coronet":
-            dex += 1
-        if _a == "trumpet":
-            dex += 1
-        return dex
+        cha = 0
+        if _w == "Gold":
+            cha += 1
+        if _h == "Coronet":
+            cha += 1
+        if _a == "Trumpet":
+            cha += 1
+        return cha
 
 screen cherub_builder:
 
@@ -1694,9 +1694,11 @@ screen cherub_builder:
 
     #style_prefix "confirm"
 
-    #add "gui/overlay/confirm.png"
+    add "bg bg_arena_empty"
+    add "gui/nvl.png"
 
     frame:
+        background None
         $cherub_text = "cherub"
         if not selected_wings == "None":
             $cherub_text = cherub_text + " wings_" + selected_wings
@@ -1711,47 +1713,51 @@ screen cherub_builder:
         vbox:
             xalign 0.8
             yalign .5
-            spacing 45
-            text "Selected wings = [selected_wings]"
+            spacing 25
+            text "Wings: [selected_wings]" xalign 0.5
             
             hbox:
+                xalign 0.5
                 #textbutton _("Feather") action SetVariable("selected_wings", "feather")
                 #textbutton _("Gold") action  SetVariable("selected_wings", "gold")
                 #textbutton _("Flame") action  SetVariable("selected_wings", "flame")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_gold.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "gold")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_flaming.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "flame")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_feather.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "feather")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_gold.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "Gold")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_flaming.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "Flaming")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/wings_feather.png", 0,0, 935, 875),0.25) yalign 0.5  action  SetVariable("selected_wings", "Feather")
                 
-            text "Selected headpiece = [selected_headpice]"
+            text "Headpiece: [selected_headpice]" xalign 0.5
             
             hbox:
+                xalign 0.5
                 #textbutton _("Halo") action SetVariable("selected_headpice", "halo")
                 #textbutton _("Helmet") action  SetVariable("selected_headpice", "helmet")
                 #textbutton _("Coronet") action  SetVariable("selected_headpice", "coronet")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_halo.png", 335,105, 150, 90),0.8) yalign 0.5 action SetVariable("selected_headpice", "halo")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_helm.png", 275,50, 330, 270),0.5) yalign 0.5  action  SetVariable("selected_headpice", "helmet")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_coronet.png", 275,50, 330, 270),0.5) yalign 0.5  action  SetVariable("selected_headpice", "coronet")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_halo.png", 335,105, 150, 90),0.8) yalign 0.5 action SetVariable("selected_headpice", "Halo")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_helm.png", 275,50, 330, 270),0.5) yalign 0.5  action  SetVariable("selected_headpice", "Horns")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/headpiece_coronet.png", 275,50, 330, 270),0.5) yalign 0.5  action  SetVariable("selected_headpice", "Coronet")
                 
-            text "Selected accessory = [selected_accessory]"
+            text "Accessory: [selected_accessory]" xalign 0.5
             
             hbox:
+                xalign 0.5
                 #textbutton _("Bow") action SetVariable("selected_accessory", "bow")
                 #textbutton _("Sword") action  SetVariable("selected_accessory", "sword")
                 #textbutton _("Trumpet") action  SetVariable("selected_accessory", "trumpet")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_bow.png", 650,160, 390, 550),0.5) yalign 0.5  action SetVariable("selected_accessory", "bow")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_sword.png", 650,160, 390, 550),0.5) yalign 0.5  action  SetVariable("selected_accessory", "sword")
-                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_trumpet.png", 650,160, 390, 550),0.5) yalign 0.5  action  SetVariable("selected_accessory", "trumpet")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_bow.png", 650,160, 390, 550),0.5) yalign 0.5  action SetVariable("selected_accessory", "Bow")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_sword.png", 650,160, 390, 550),0.5) yalign 0.5  action  SetVariable("selected_accessory", "Sword")
+                imagebutton idle im.FactorScale(im.Crop("images/cherub/accessory_trumpet.png", 650,160, 390, 550),0.5) yalign 0.5  action  SetVariable("selected_accessory", "Trumpet")
                 
             #text "Stats:"
             
-            $cherub_str = GetStr(selected_wings, selected_headpice, selected_accessory)
-            $cherub_dex = GetDex(selected_wings, selected_headpice, selected_accessory)
-            $cherub_cha = GetCha(selected_wings, selected_headpice, selected_accessory)
+            $str = GetStr(selected_wings, selected_headpice, selected_accessory)
+            $dex = GetDex(selected_wings, selected_headpice, selected_accessory)
+            $cha = GetCha(selected_wings, selected_headpice, selected_accessory)
+            #text "[str], [dex], [cha], [cherub_text]"
             if selected_wings == "None" or selected_headpice == "None" or selected_accessory == "None" :
-                #textbutton "Continue" action Null
+                textbutton " " action Null
                 pass
             else:
-                textbutton "Continue" action Return()
+                textbutton "Continue" xalign 1.0 action [SetVariable("cherub_str", str), SetVariable("cherub_dex", dex), SetVariable("cherub_cha", cha),  Return()]
             
             #vbox:
             #    hbox:
