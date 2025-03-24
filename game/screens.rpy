@@ -358,17 +358,29 @@ screen main_menu():
     frame:
         style "main_menu_frame"
 
+    add "gui/overlay/main menu_title.png" xalign 0.5 yalign 0.7
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    #use navigation
+    
+    imagebutton auto "gui/button/main menu_about_%s.png" xpos 350 ypos 850 action ShowMenu("about")
+    imagebutton auto "gui/button/main menu_exit_%s.png" xalign 0.45 yalign 1.0 action Quit(confirm=not main_menu)
+    imagebutton auto "gui/button/main menu_help_%s.png" xpos 1550 ypos 700   action ShowMenu("help")
+    imagebutton auto "gui/button/main menu_load_%s.png" xpos 200 ypos 500 action ShowMenu("load")
+    imagebutton auto "gui/button/main menu_options_%s.png" xpos 100 ypos 700 action ShowMenu("preferences")
+    imagebutton auto "gui/button/main menu_PLAY_%s.png" xalign 0.5 yoffset 6 action Start()   
+    
+    imagebutton auto "gui/button/main menu_extras_%s.png" xpos 1450 ypos 500   action ShowMenu("preferences")
+    imagebutton auto "gui/button/main menu_endings_%s.png" xpos 1150 ypos 650   action ShowMenu("preferences")
+    imagebutton auto "gui/button/main menu_musicbox_%s.png" xpos 1250 ypos 850  action ShowMenu("preferences")
 
     if gui.show_name:
 
         vbox:
             style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
+            #text "[config.name!t]":
+            #    style "main_menu_title"
 
             text "[config.version]":
                 style "main_menu_version"
