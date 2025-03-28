@@ -62,8 +62,8 @@ style vscrollbar:
 
 style slider:
     ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    base_bar Frame("gui/scrollbar/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
+    thumb "gui/scrollbar/horizontal_[prefix_]thumb.png"
 
 style vslider:
     xsize gui.slider_size
@@ -225,9 +225,12 @@ style choice_vbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    xsize 1184 
+    ysize 142
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+    yalign 0.45
 
 
 ## Quick Menu screen ###########################################################
@@ -245,18 +248,26 @@ screen quick_menu():
         hbox:
             style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
+            xalign 0.95
+            yalign 0.96
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            #textbutton _("Back") action Rollback()
+            #textbutton _("History") action ShowMenu('history')
+            #textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            #textbutton _("Auto") action Preference("auto-forward", "toggle")
+            #textbutton _("Save") action ShowMenu('save')
+            #textbutton _("Q.Save") action QuickSave()
+            #textbutton _("Q.Load") action QuickLoad()
+            #textbutton _("Prefs") action ShowMenu('preferences')
 
+            imagebutton auto "gui/button/textbox_buttons_back_%s.png" focus_mask True  action Rollback()
+            imagebutton auto "gui/button/textbox_buttons_history_%s.png" focus_mask True  action ShowMenu('history')
+            imagebutton auto "gui/button/textbox_buttons_skip_%s.png" selected_idle "gui/button/textbox_buttons_skip_hover.png" focus_mask True  action Skip() alternate Skip(fast=True, confirm=True)
+            imagebutton auto "gui/button/textbox_buttons_next_%s.png" focus_mask True  action Preference("auto-forward", "toggle")
+            #imagebutton auto "gui/button/textbox_buttons_Save_%s.png" focus_mask True  action ShowMenu('save')
+            imagebutton auto "gui/button/textbox_buttons_quicksave_%s.png" focus_mask True  action QuickSave()
+            imagebutton auto "gui/button/textbox_buttons_quickload_%s.png" focus_mask True  action QuickLoad()
+            imagebutton auto "gui/button/textbox_buttons_settings_%s.png" focus_mask True  action ShowMenu('preferences')
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
@@ -285,7 +296,6 @@ style quick_button_text:
 ## to other menus, and to start the game.
 
 screen navigation():
-
     vbox:
         style_prefix "navigation"
 
@@ -306,7 +316,11 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Options") action ShowMenu("preferences")
+
+        if persistent.extras_unlocked:
+
+          textbutton _("Extras") action ShowMenu("cg_gallery")
 
         if _in_replay:
 
@@ -328,7 +342,8 @@ screen navigation():
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
-
+    
+    add "gui/scrollbar/options_extra_verticalbar.png" xalign 0.2 yalign 0.5 yoffset 20
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -340,6 +355,21 @@ style navigation_button:
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
 
+screen extra_navigation():
+
+    vbox:
+        style_prefix "navigation"
+
+        xpos gui.navigation_xpos
+        yalign 0.5
+
+        spacing gui.navigation_spacing
+
+        textbutton _("CG Gallery") action ShowMenu("cg_gallery")
+        textbutton _("BG Gallery") action ShowMenu("bg_gallery")
+        textbutton _("Music") action ShowMenu("musicbox")
+        textbutton _("Endings") action ShowMenu("endings")
+    add "gui/scrollbar/options_extra_verticalbar.png" xalign 0.2 yalign 0.5 yoffset 20
 
 ## Main Menu screen ############################################################
 ##
@@ -370,9 +400,10 @@ screen main_menu():
     imagebutton auto "gui/button/main menu_options_%s.png" xpos 100 ypos 700 action ShowMenu("preferences")
     imagebutton auto "gui/button/main menu_PLAY_%s.png" xalign 0.5 yoffset 6 action Start()   
     
-    imagebutton auto "gui/button/main menu_extras_%s.png" xpos 1450 ypos 500   action ShowMenu("preferences")
-    imagebutton auto "gui/button/main menu_endings_%s.png" xpos 1150 ypos 650   action ShowMenu("preferences")
-    imagebutton auto "gui/button/main menu_musicbox_%s.png" xpos 1250 ypos 850  action ShowMenu("preferences")
+    if persistent.extras_unlocked:
+        imagebutton auto "gui/button/main menu_extras_%s.png" xpos 1450 ypos 500   action ShowMenu("cg_gallery")
+        imagebutton auto "gui/button/main menu_endings_%s.png" xpos 1150 ypos 650   action ShowMenu("endings")
+        imagebutton auto "gui/button/main menu_musicbox_%s.png" xpos 1250 ypos 850  action ShowMenu("musicbox")
 
     if gui.show_name:
 
@@ -424,7 +455,7 @@ style main_menu_version:
 ## This screen is intended to be used with one or more children, which are
 ## transcluded (placed) inside it.
 
-screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+screen game_menu(title, scroll=None, yinitial=0.0, spacing=0, extra_navigation=False):
 
     style_prefix "game_menu"
 
@@ -482,7 +513,10 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
-    use navigation
+    if extra_navigation:
+        use extra_navigation
+    else:
+        use navigation
 
     textbutton _("Return"):
         style "return_button"
@@ -726,6 +760,10 @@ style page_button_text:
 
 style slot_button:
     properties gui.button_properties("slot_button")
+    background "gui/button/options_saveslot_idle.png"
+    hover_background "gui/button/options_saveslot_hover.png"
+    selected_idle_background "gui/button/options_saveslot_selected_idle.png"
+    selected_hover_background "gui/button/options_saveslot_selected_hover.png"
 
 style slot_button_text:
     properties gui.text_properties("slot_button")
@@ -742,7 +780,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Options"), scroll="viewport"):
 
         vbox:
 
@@ -1163,7 +1201,7 @@ screen confirm(message, yes_action, no_action):
 
     style_prefix "confirm"
 
-    add "gui/overlay/confirm.png"
+    add "gui/overlay/confirm.png" xalign 0.5 yalign 0.5
 
     frame:
 
@@ -1194,7 +1232,7 @@ style confirm_button is gui_medium_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
+    background None #Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
     padding gui.confirm_frame_borders.padding
     xalign .5
     yalign .5

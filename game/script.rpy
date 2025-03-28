@@ -1180,7 +1180,9 @@ label part_001:
 
   "This one wasn't human."
 
-  "Or at least he hadn't been human in a millennia."
+  "Or at least he hadn't been human in millennia."
+
+  hide red
 
   show bg bg_gates_open with slow_dissolve
 
@@ -1189,8 +1191,6 @@ label part_001:
   show eva eva_shock at left behind lilis
 
   "Everyone gasped as the pearly gates parted all of a sudden."
-
-  hide red
 
   show peter peter_default at center behind lilis with dissolve
 
@@ -1729,6 +1729,8 @@ label part_012:
 
   Saint_Peter "So the time has come to open the pearly gates."
 
+  hide peter
+
   show lilis lilis_smile #as side image
 
   show eva eva_smile at left behind lilis
@@ -1738,6 +1740,8 @@ label part_012:
   "He unlocked the gates, which finally swung open."
 
   "The group raised a chorus of cheers in response."
+
+  show peter peter_default at center behind lilis with dissolve
 
   Saint_Peter "I am warmly welcoming the new arrivals."
 
@@ -2529,7 +2533,11 @@ label part_016:
 label part_AA:
 
   $ points_surrender += 1
-  "Eva wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
+
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
   jump part_AF
@@ -2537,7 +2545,10 @@ label part_AA:
 label part_AD:
 
   $ points_victory += 1
-  "Lilis wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2545,14 +2556,17 @@ label part_AD:
 
 label part_AE:
 
-  "Eva wins this round!"
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
+
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AF
 
 label part_AF:
 
-  show asta asta_smile at center behind lilis with dissolve
+  show asta asta_smile at center behind lilis
 
   Asta "And now for the big reveal!"
 
@@ -2619,7 +2633,10 @@ label part_018:
 label part_AG:
 
   $ points_surrender += 1
-  "Eva wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2629,7 +2646,10 @@ label part_AG:
 label part_AJ:
 
   $ points_victory += 1
-  "Lilis wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2637,14 +2657,17 @@ label part_AJ:
 
 label part_AK:
 
-  "Eva wins this round!"
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
+
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AL
 
 label part_AL:
 
-  show asta asta_smile at center behind lilis with dissolve
+  show asta asta_smile at center behind lilis
 
   Asta "And now for the exciting reveal!"
 
@@ -2713,7 +2736,10 @@ label part_020:
 label part_AM:
 
   $ points_surrender += 1
-  "Eva wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2722,7 +2748,10 @@ label part_AM:
 label part_AP:
 
   $ points_victory += 1
-  "Lilis wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2730,14 +2759,17 @@ label part_AP:
 
 label part_AQ:
 
-  "Eva wins this round!"
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
+
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AR
 
 label part_AR:
 
-  show asta asta_smile at center behind lilis with dissolve
+  show asta asta_smile at center behind lilis
 
   Asta "Are you ready for this thrilling revelation?"
 
@@ -2809,7 +2841,10 @@ label part_022:
 label part_AS:
 
   $ points_surrender += 1
-  "Eva wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2818,7 +2853,10 @@ label part_AS:
 label part_AV:
 
   $ points_victory += 1
-  "Lilis wins this round!"
+
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2826,14 +2864,17 @@ label part_AV:
 
 label part_AW:
 
-  "Eva wins this round!"
+  show asta asta_default at center behind lilis with dissolve
+
+  Asta "Eva has won this round!"
+
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
   jump part_AX
 
 label part_AX:
 
-  show asta asta_smile at center behind lilis with dissolve
+  show asta asta_smile at center behind lilis
 
   Asta "It's time to announce the virtue for the last poem!"
 
@@ -4026,7 +4067,7 @@ label part_credits:
     $ quick_menu = False
 
     $ credits_speed = 20
-    scene bg bg_dark
+    scene bg bg_gates
     with dissolve
     show cred at Move((0.5, 1.5), (0.5, 0.0), credits_speed, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
     with Pause(credits_speed)
@@ -4053,6 +4094,8 @@ label part_credits:
     $ quick_menu = True
 
     return
+
+
 
 
 

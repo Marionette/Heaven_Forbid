@@ -25,7 +25,7 @@ define config.check_conflicting_properties = True
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = '#0099ff'
+define gui.accent_color = '#76b9ff'
 
 ## The color used for a text button when it is neither selected nor hovered.
 define gui.idle_color = '#707070'
@@ -51,7 +51,7 @@ define gui.hover_muted_color = '#99d6ff'
 
 ## The colors used for dialogue and menu choice text.
 define gui.text_color = '#404040'
-define gui.interface_text_color = '#404040'
+define gui.interface_text_color = '#b7a2b5'
 
 
 ## Fonts and Font Sizes ########################################################
@@ -212,7 +212,7 @@ define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = '#707070'
-define gui.choice_button_text_hover_color = "#ffffff"
+define gui.choice_button_text_hover_color = "#947a9f"
 define gui.choice_button_text_insensitive_color = '#7070707f'
 
 
@@ -233,8 +233,8 @@ define gui.slot_button_text_selected_idle_color = gui.selected_color
 define gui.slot_button_text_selected_hover_color = gui.hover_color
 
 ## The width and height of thumbnails used by the save slots.
-define config.thumbnail_width = 384
-define config.thumbnail_height = 216
+define config.thumbnail_width = 353
+define config.thumbnail_height = 185
 
 ## The number of columns and rows in the grid of save slots.
 define gui.file_slot_cols = 3
@@ -341,10 +341,10 @@ define config.history_length = 250
 
 ## The height of a history screen entry, or None to make the height variable at
 ## the cost of performance.
-define gui.history_height = 210
+define gui.history_height = None
 
 ## Additional space to add between history screen entries.
-define gui.history_spacing = 0
+define gui.history_spacing = 5
 
 ## The position, width, and alignment of the label giving the name of the
 ## speaking character.
@@ -365,7 +365,7 @@ define gui.history_text_xalign = 0.0
 ## The NVL-mode screen displays the dialogue spoken by NVL-mode characters.
 
 ## The borders of the background of the NVL-mode background window.
-define gui.nvl_borders = Borders(20, 45, 20, 30)
+define gui.nvl_borders = Borders(20, 145, 20, 30)
 
 ## The maximum number of NVL-mode entries Ren'Py will display. When more entries
 ## than this are to be show, the oldest entry will be removed.
@@ -388,8 +388,8 @@ define gui.nvl_name_xalign = 1.0
 
 ## The position, width, and alignment of the dialogue text.
 define gui.nvl_text_xpos = 975
-define gui.nvl_text_ypos = 10
-define gui.nvl_text_width = 885
+define gui.nvl_text_ypos = 5
+define gui.nvl_text_width = 805
 define gui.nvl_text_xalign = 0.0
 
 ## The position, width, and alignment of nvl_thought text (the text said by the

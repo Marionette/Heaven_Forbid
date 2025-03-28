@@ -29,7 +29,14 @@ define config.version = "0.2"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p("""
+define gui.about = _p("""{b}{size=+10}Credits{/size}{/b}{p}
+Writing: {a=https://ilyilaice.itch.io/}ilyilaice{/a}{p}
+Coding and Programming: {a=https://marionette.itch.io/}Marionette{/a}{p}
+Sprites and CGs: {a=https://twitter.com/applecidrdonut}applecidrdonut{/a}{p}
+BG Art: makigirl{p}
+Minigame Art: {a=https://twitter.com/what_an_animal}what an animal{/a}{p}
+GUI: {a=https://www.deviantart.com/gido}Gido{/a}{p}
+Music: {a=https://www.tiktok.com/@hinsonor}Beans{/a}{p}
 """)
 
 
