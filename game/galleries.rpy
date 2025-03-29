@@ -21,6 +21,7 @@ init:
     
   image bg_gates_button = im.Scale("images/bg_gates.png", 383, 215)
   image bg_heaven_button = im.Scale("images/bg_heaven.png", 383, 215)
+  image bg_heaven_edge_button = im.Scale("images/bg_heaven_edge.png", 383, 215)
   image bg_arena_button = im.Scale("images/bg_arena.png", 383, 215)
     
 
@@ -52,6 +53,8 @@ init python:
     
     g_bg.button("bg bg_heaven")
     g_bg.unlock_image("bg bg_heaven")
+    
+    g_bg.button("bg bg_heaven_edge")
     g_bg.unlock_image("bg bg_heaven_edge")
     
     g_bg.locked_button = "gallerylock_button"
@@ -123,8 +126,10 @@ screen bg_gallery():
             button:
               add g_bg.make_button("bg bg_heaven", "bg_heaven_button", xalign=0.5, yalign=0.55) xoffset -5 yoffset -5
             button:
-              add g_bg.make_button("bg bg_arena", "bg_arena_button", xalign=0.5, yalign=0.55) xoffset 245 yoffset -5
-            null
+              add g_bg.make_button("bg bg_heaven_edge", "bg_heaven_edge_button", xalign=0.5, yalign=0.55) xoffset -5 yoffset -5
+            button:
+              add g_bg.make_button("bg bg_arena", "bg_arena_button", xalign=0.5, yalign=0.55) xoffset -5 yoffset -5
+            #null
               
     
     

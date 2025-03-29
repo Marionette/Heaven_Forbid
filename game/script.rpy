@@ -2,15 +2,6 @@
 
 label start:
 
-  $headpiece_halo = False
-  $headpiece_helm = False
-  $headpiece_coronet = False
-  $wings_feather = False
-  $wings_flaming = False
-  $wings_gold = False
-  $accessory_bow = False
-  $accessory_sword = False
-  $accessory_trumpet = False
   $condition_god = False
   $points_dexterity = 0
   $points_strength = 0
