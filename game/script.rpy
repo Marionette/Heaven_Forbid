@@ -2803,8 +2803,7 @@ label part_021:
 
   show asta asta_default at left behind lilis with dissolve
 
-  nvl_narrator """ Dexterity, charisma, and brute strength, \n When rolled in one, amount to fearsome foe. \n A victor of the moment and at length \n Knows not a single badge they can forgo.
-An even distribution is the way \n To be the last man standing in the room. \n When weighted in all places, day by day, \n You can maintain an equilibrium. \n Extremes hint at superlatives, and yet \n They're never wholly guaranteed a pass. \n For even titans, battles are a bet; \n Achilles' heels compose their body mass. """
+  nvl_narrator """ Dexterity, charisma, and brute strength, \n When rolled in one, amount to fearsome foe. \n A victor of the moment and at length \n Knows not a single badge they can forgo. \n An even distribution is the way \n To be the last man standing in the room. \n When weighted in all places, day by day, \n You can maintain an equilibrium. \n Extremes hint at superlatives, and yet \n They're never wholly guaranteed a pass. \n For even titans, battles are a bet; \n Achilles' heels compose their body mass. """
 
   nvl_narrator " With harmony, holism, you'll achieve \n A spot upstairs and not be forced to leave. "
 
@@ -4094,10 +4093,4 @@ label part_credits:
     $ quick_menu = True
 
     return
-
-
-
-
-
-
 
