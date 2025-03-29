@@ -2510,16 +2510,21 @@ label part_016:
 
 
 #[MINIGAME: The battle angels face off against each other. Lilis's battle angel has the chosen options. Eva's battle angel has headpiece_halo (+1 dexterity); wings_flaming (+1 strength); accessory_trumpet (+1 charisma).] 
-
+  
   menu:
     "Fight.":
       $points_dexterity = cherub_dex
       if points_dexterity >= 2:
+        call battle_phase(1, True)
         jump part_AD
       else:
+        call battle_phase(1, False)
         jump part_AE
     "Surrender.":
+      show asta asta_default at center behind lilis with dissolve
+      Asta "Eva has won this round!"
       jump part_AA
+
 
 label part_AA:
 
@@ -2527,7 +2532,8 @@ label part_AA:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
+  
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2539,7 +2545,7 @@ label part_AD:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Lilis has won this round!"
+  #Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2549,7 +2555,7 @@ label part_AE:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
@@ -2615,10 +2621,14 @@ label part_018:
     "Fight.":
       $points_strength = cherub_str
       if points_strength >= 2:
+        call battle_phase(2, True)
         jump part_AJ
       else:
+        call battle_phase(2, True)
         jump part_AK
     "Surrender.":
+      show asta asta_default at center behind lilis with dissolve
+      Asta "Eva has won this round!"
       jump part_AG
 
 label part_AG:
@@ -2718,10 +2728,14 @@ label part_020:
     "Fight.":
       $points_charisma = cherub_cha
       if points_charisma >= 2:
+        call battle_phase(3, True)
         jump part_AP
       else:
+        call battle_phase(3, False)
         jump part_AQ
     "Surrender.":
+      show asta asta_default at center behind lilis with dissolve
+      Asta "Eva has won this round!"
       jump part_AM
 
 label part_AM:
@@ -2730,7 +2744,6 @@ label part_AM:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2742,7 +2755,7 @@ label part_AP:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Lilis has won this round!"
+  #Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2752,7 +2765,7 @@ label part_AQ:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
@@ -2822,10 +2835,14 @@ label part_022:
       $points_strength = cherub_str
       $points_charisma = cherub_cha
       if points_dexterity == 1 and points_strength == 1 and points_charisma == 1:
+        call battle_phase(4, True)
         jump part_AV
       else:
+        call battle_phase(4, False)
         jump part_AW
     "Surrender.":
+      show asta asta_default at center behind lilis with dissolve
+      Asta "Eva has won this round!"
       jump part_AS
 
 label part_AS:
@@ -2834,7 +2851,7 @@ label part_AS:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2846,7 +2863,7 @@ label part_AV:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Lilis has won this round!"
+  #Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2856,7 +2873,7 @@ label part_AW:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
@@ -4085,3 +4102,118 @@ label part_credits:
 
     return
 
+################### battle events ####################
+
+transform spin_r:
+    #xalign 0.5
+    #yalign 0.5
+    rotate 0
+    parallel:
+        linear 1.0 rotate 180
+    parallel:
+        linear 1.0 xoffset 300
+    
+transform spin_l:
+    #xalign 0.5
+    #yalign 0.5
+    rotate 0
+    parallel:
+        linear 1.0 rotate -180
+    parallel:
+        linear 1.0 xoffset -900
+    
+transform battle_start_l:
+    xoffset 0
+    easein 0.4 xoffset -150
+    linear 0.2 xoffset 0
+    easein 0.3 xoffset 40
+    easein 0.3 xoffset -40
+    easein 0.2 xoffset 0
+    battle_struggle
+transform battle_start_r:
+    xoffset 0
+    easein 0.4 xoffset 150
+    linear 0.2 xoffset 0
+    easein 0.3 xoffset 40
+    easein 0.3 xoffset -40
+    easein 0.2 xoffset 0
+    battle_struggle
+
+transform battle_struggle:
+    #xoffset 0
+    block:
+        easein 1.0 xoffset 150
+        easein 0.2 xoffset 150
+        easein 1.0 xoffset -150
+        easein 0.2 xoffset -150
+        repeat
+transform battle_struggle_end_l:
+    #xoffset 0
+    block:
+        easein 1.0 xoffset -150
+        easein 1.0 xoffset 150
+        #repeat
+transform battle_struggle_end_r:
+    #xoffset 0
+    block:
+        easein 0.2 xoffset -50
+        linear 0.5 xoffset 150
+        #repeat
+    
+label battle_phase(_opp=1, _win=False):
+  $ab_default = "avatar_blue default_"+str(_opp)
+  $ab_sad = "avatar_blue sad_"+str(_opp)
+  $ab_smile = "avatar_blue smile_"+str(_opp)
+  scene bg bg_arena
+  show asta asta_smile at center
+  with dissolve
+  show expression ab_default at battle_right
+  with dissolve
+  Asta "On the right, representing Eva..."
+  show expression cherub_configuration + " neutral"  at battle_left
+  with dissolve
+  Asta "On the left, representing Lilis..."
+  hide asta
+  with dissolve
+  Asta "Ready..."
+  show expression ab_default at battle_start_r
+  show expression cherub_configuration + " neutral" at battle_start_l
+  #show expression cherub_configuration + " sad"
+  Asta "Fight!"
+  if _win:
+      show expression ab_default at battle_struggle_end_r
+      show expression cherub_configuration + " neutral" at battle_struggle_end_r
+      pause(0.7)
+      hide expression cherub_configuration + " neutral"
+      show expression cherub_configuration + " smile"
+      #hide expression ab_default
+      show expression ab_default at spin_r
+      #show expression cherub_configuration + " smile"
+      "!"
+
+      scene bg bg_arena
+      hide expression cherub_configuration + " smile"
+      show expression cherub_configuration + " smile" at battle_left
+      show expression ab_sad at battle_right
+      show asta asta_smile at center behind lilis
+      with dissolve
+      Asta "Lilis has won this round!"
+  else:
+      show expression ab_default at battle_struggle_end_l
+      show expression cherub_configuration + " neutral" at battle_struggle_end_l
+      pause(0.7)
+      hide expression cherub_configuration + " neutral"
+      show expression cherub_configuration + " sad" at spin_l
+      hide expression ab_default
+      show expression ab_smile at battle_right
+      #show expression cherub_configuration + " smile"
+      "!"
+      scene bg bg_arena
+      show expression cherub_configuration + " sad" at battle_left
+      show expression ab_smile at battle_right
+      show asta asta_smile at center behind lilis
+      with dissolve
+      Asta "Eva has won this round!"
+  
+  
+  return

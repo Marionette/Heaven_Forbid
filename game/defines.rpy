@@ -8,6 +8,17 @@ init:
     #transform right:
     #  yalign 1.0 xanchor .5 xalign 0.75
     
+    transform battle_right:
+        rotate 0
+        yalign 0.5
+        xalign 1.0
+        transform_anchor True
+    transform battle_left:
+        rotate 0
+        yalign 0.5
+        xalign 0.0
+        transform_anchor True
+    
     ######### MISC DEFINES #############
     define slow_dissolve = Dissolve(2.0)
         
@@ -26,6 +37,9 @@ init:
     default points_charisma = 0
     default points_victory = 0
     default points_surrender = 0
+    default ab_default = "avatar_blue default_1"
+    default ab_sad = "avatar_blue sad_1"
+    default ab_smile = "avatar_blue smile_1"
     
     # Declare characters used by this game. The color argument colorizes the
     # name of the character.
@@ -142,3 +156,18 @@ init:
     image red red_default = im.FactorScale("images/red_default.png",0.45)
     image violet violet_default = im.FactorScale("images/violet_default.png",0.45)
     image yellow yellow_default = im.FactorScale("images/yellow_default.png",0.45)
+    
+    image avatar_blue default_1 = im.Crop("images/avatar_blue_default_1.png", 900,0,1020,1080)
+    image avatar_blue default_2 = im.Crop("images/avatar_blue_default_2.png", 900,0,1020,1080)
+    image avatar_blue default_3 = im.Crop("images/avatar_blue_default_3.png", 900,0,1020,1080)
+    image avatar_blue default_4 = im.Crop("images/avatar_blue_default_4.png", 900,0,1020,1080)
+    
+    image avatar_blue sad_1 = im.Crop("images/avatar_blue_sad_1.png", 900,0,1020,1080)
+    image avatar_blue sad_2 = im.Crop("images/avatar_blue_sad_2.png", 900,0,1020,1080)
+    image avatar_blue sad_3 = im.Crop("images/avatar_blue_sad_3.png", 900,0,1020,1080)
+    image avatar_blue sad_4 = im.Crop("images/avatar_blue_sad_4.png", 900,0,1020,1080)
+    
+    image avatar_blue smile_1 = im.Crop("images/avatar_blue_smile_1.png", 900,0,1020,1080)
+    image avatar_blue smile_2 = im.Crop("images/avatar_blue_smile_2.png", 900,0,1020,1080)
+    image avatar_blue smile_3 = im.Crop("images/avatar_blue_smile_3.png", 900,0,1020,1080)
+    image avatar_blue smile_4 = im.Crop("images/avatar_blue_smile_4.png", 900,0,1020,1080)

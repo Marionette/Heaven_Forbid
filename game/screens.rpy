@@ -1669,6 +1669,7 @@ init -1:
     define selected_headpice = "None"
     define selected_wings = "None"
     define selected_accessory = "None"
+    define cherub_configuration = "cherub"
     
     define cherub_str = 0
     define cherub_dex = 0
@@ -1678,31 +1679,35 @@ layeredimage cherub:
         
     group wings:
         attribute wings_Gold:
-            im.FactorScale("images/cherub/wings_gold.png", 1.0) 
+            im.Crop("images/cherub/wings_gold.png", 0,0,1020,1080) 
         attribute wings_Flaming:
-            im.FactorScale("images/cherub/wings_flaming.png", 1.0)
+            im.Crop("images/cherub/wings_flaming.png", 0,0,1020,1080)
         attribute wings_Feather:
-            im.FactorScale("images/cherub/wings_feather.png", 1.0)
+            im.Crop("images/cherub/wings_feather.png", 0,0,1020,1080)
             
     group base:
-        attribute body default:
-            im.FactorScale("images/cherub/avatar_white_default.png", 1.0)
+        attribute neutral default:
+            im.Crop("images/cherub/avatar_white_default.png", 0,0,1020,1080)
+        attribute sad default:
+            im.Crop("images/cherub/avatar_white_sad.png", 0,0,1020,1080)
+        attribute smile default:
+            im.Crop("images/cherub/avatar_white_smile.png", 0,0,1020,1080)
         
     group headpiece:
         attribute headpiece_Halo:
-            im.FactorScale("images/cherub/headpiece_halo.png", 1.0)
+            im.Crop("images/cherub/headpiece_halo.png", 0,0,1020,1080)
         attribute headpiece_Horns:
-            im.FactorScale("images/cherub/headpiece_helm.png", 1.0)
+            im.Crop("images/cherub/headpiece_helm.png", 0,0,1020,1080)
         attribute headpiece_Coronet:
-            im.FactorScale("images/cherub/headpiece_coronet.png", 1.0)
+            im.Crop("images/cherub/headpiece_coronet.png", 0,0,1020,1080)
         
     group accessory:
         attribute accessory_Bow:
-            im.FactorScale("images/cherub/accessory_bow.png", 1.0)
+            im.Crop("images/cherub/accessory_bow.png", 0,0,1020,1080)
         attribute accessory_Sword:
-            im.FactorScale("images/cherub/accessory_sword.png", 1.0)
+            im.Crop("images/cherub/accessory_sword.png", 0,0,1020,1080)
         attribute accessory_Trumpet:
-            im.FactorScale("images/cherub/accessory_trumpet.png", 1.0)
+            im.Crop("images/cherub/accessory_trumpet.png", 0,0,1020,1080)
 
 init python:
     def GetStr(_w, _h, _a):
@@ -1807,7 +1812,7 @@ screen cherub_builder:
                 textbutton " " action Null
                 pass
             else:
-                textbutton "Continue" xalign 1.0 action [SetVariable("cherub_str", str), SetVariable("cherub_dex", dex), SetVariable("cherub_cha", cha),  Return()]
+                textbutton "Continue" xalign 1.0 action [SetVariable("cherub_str", str), SetVariable("cherub_dex", dex), SetVariable("cherub_cha", cha), SetVariable("cherub_configuration", cherub_text),  Return()]
             
             #vbox:
             #    hbox:
