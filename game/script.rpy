@@ -2515,14 +2515,14 @@ label part_016:
     "Fight.":
       $points_dexterity = cherub_dex
       if points_dexterity >= 2:
-        call battle_phase(1, True)
+        call battle_phase(1, True) from _call_battle_phase
         jump part_AD
       else:
-        call battle_phase(1, False)
+        call battle_phase(1, False) from _call_battle_phase_1
         jump part_AE
     "Surrender.":
       show asta asta_default at center behind lilis with dissolve
-      Asta "Eva has won this round!"
+      Asta "Since Lilis has surrendered, Eva has won this round!"
       jump part_AA
 
 
@@ -2530,10 +2530,9 @@ label part_AA:
 
   $ points_surrender += 1
 
-  show asta asta_default at center behind lilis with dissolve
+  show asta asta_default at center behind lilis
 
-  #Asta "Eva has won this round!"
-  
+  #Asta "Eva has won this round!"  
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2570,7 +2569,7 @@ label part_AF:
   Asta "The attribute for this round was dexterity!"
 
 #[MINIGAME: END]
-
+  scene bg bg_arena
   jump part_017
 
 label part_017:
@@ -2621,23 +2620,23 @@ label part_018:
     "Fight.":
       $points_strength = cherub_str
       if points_strength >= 2:
-        call battle_phase(2, True)
+        call battle_phase(2, True) from _call_battle_phase_2
         jump part_AJ
       else:
-        call battle_phase(2, True)
+        call battle_phase(2, False) from _call_battle_phase_3
         jump part_AK
     "Surrender.":
       show asta asta_default at center behind lilis with dissolve
-      Asta "Eva has won this round!"
+      Asta "Since Lilis has surrendered, Eva has won this round!"
       jump part_AG
 
 label part_AG:
 
   $ points_surrender += 1
 
-  show asta asta_default at center behind lilis with dissolve
+  show asta asta_default at center behind lilis
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2650,7 +2649,7 @@ label part_AJ:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Lilis has won this round!"
+  #Asta "Lilis has won this round!"
 
   #"[VFX: The winning avatar (of Lilis) smiles. The losing avatar (of Eva) looks sad.]"
 
@@ -2660,7 +2659,7 @@ label part_AK:
 
   show asta asta_default at center behind lilis with dissolve
 
-  Asta "Eva has won this round!"
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The losing avatar (of Lilis) looks sad.]"
 
@@ -2676,6 +2675,7 @@ label part_AL:
 
 #[MINIGAME: END]
 
+  scene bg bg_arena
   jump part_019
 
 label part_019:
@@ -2728,22 +2728,23 @@ label part_020:
     "Fight.":
       $points_charisma = cherub_cha
       if points_charisma >= 2:
-        call battle_phase(3, True)
+        call battle_phase(3, True) from _call_battle_phase_4
         jump part_AP
       else:
-        call battle_phase(3, False)
+        call battle_phase(3, False) from _call_battle_phase_5
         jump part_AQ
     "Surrender.":
       show asta asta_default at center behind lilis with dissolve
-      Asta "Eva has won this round!"
+      Asta "Since Lilis has surrendered, Eva has won this round!"
       jump part_AM
 
 label part_AM:
 
   $ points_surrender += 1
 
-  show asta asta_default at center behind lilis with dissolve
+  show asta asta_default at center behind lilis
 
+  #Asta "Eva has won this round!"
 
   #"[VFX: The winning avatar (of Eva) smiles. The surrendering avatar (of Lilis) looks sad.]"
 
@@ -2781,6 +2782,7 @@ label part_AR:
 
 #[MINIGAME: END]
 
+  scene bg bg_arena
   jump part_021
 
 label part_021:
@@ -2835,21 +2837,21 @@ label part_022:
       $points_strength = cherub_str
       $points_charisma = cherub_cha
       if points_dexterity == 1 and points_strength == 1 and points_charisma == 1:
-        call battle_phase(4, True)
+        call battle_phase(4, True) from _call_battle_phase_6
         jump part_AV
       else:
-        call battle_phase(4, False)
+        call battle_phase(4, False) from _call_battle_phase_7
         jump part_AW
     "Surrender.":
       show asta asta_default at center behind lilis with dissolve
-      Asta "Eva has won this round!"
+      Asta "Since Lilis has surrendered, Eva has won this round!"
       jump part_AS
 
 label part_AS:
 
   $ points_surrender += 1
 
-  show asta asta_default at center behind lilis with dissolve
+  show asta asta_default at center behind lilis
 
   #Asta "Eva has won this round!"
 
@@ -2889,6 +2891,7 @@ label part_AX:
 
 #[MINIGAME: END]
 
+  scene bg bg_arena
   jump part_023
 
 label part_023:
@@ -4189,7 +4192,7 @@ label battle_phase(_opp=1, _win=False):
       #hide expression ab_default
       show expression ab_default at spin_r
       #show expression cherub_configuration + " smile"
-      "!"
+      "!!!"
 
       scene bg bg_arena
       hide expression cherub_configuration + " smile"
@@ -4207,7 +4210,7 @@ label battle_phase(_opp=1, _win=False):
       hide expression ab_default
       show expression ab_smile at battle_right
       #show expression cherub_configuration + " smile"
-      "!"
+      "!!!"
       scene bg bg_arena
       show expression cherub_configuration + " sad" at battle_left
       show expression ab_smile at battle_right
@@ -4217,3 +4220,5 @@ label battle_phase(_opp=1, _win=False):
   
   
   return
+
+

@@ -1764,7 +1764,7 @@ screen cherub_builder:
             
         frame:
             background None yalign 1.0
-            add cherub_text
+            add cherub_text + " neutral"
         vbox:
             xalign 0.8
             yalign .5
